@@ -1,0 +1,7 @@
+Car Concept — model and textures by Eric Chadwick, © 2024 Darmstadt Graphics Group GmbH.
+Licensed under Creative Commons Attribution 4.0 International:
+https://creativecommons.org/licenses/by/4.0/
+Source: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept
+Original source model: Unity Fan, Free Concept Car 004 (CC0), as documented by the source project.
+Adaptations for this concept: black/red materials, logo-bearing plate/emblem omission, normalized geometry, scroll-driven exterior reveal, illustrative structural reinforcements.
+No affiliation with or endorsement by the original creators or any automotive manufacturer is implied.

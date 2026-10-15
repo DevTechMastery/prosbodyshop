@@ -1,0 +1,10 @@
+'use client';
+import {useEffect} from 'react';
+import gsap from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+export default function Effects(){useEffect(()=>{gsap.registerPlugin(ScrollTrigger);const mm=gsap.matchMedia();mm.add('(prefers-reduced-motion: no-preference)',()=>{
+ gsap.fromTo('.hero-title .line',{clipPath:'inset(0 0 100% 0)',y:25},{clipPath:'inset(0 0 0% 0)',y:0,duration:1.25,stagger:.12,ease:'power3.out'});
+ const desktop=gsap.matchMedia();desktop.add('(min-width: 761px)',()=>{const sequence=gsap.timeline({scrollTrigger:{trigger:'.hero-scroll',start:'top top',end:'bottom bottom',scrub:1,onUpdate:self=>{const percentage=document.querySelector('.assembly-percent');if(percentage)percentage.textContent=Math.round(self.progress*100)+'%';const steps=['STRUCTURE','BODY','PAINT','FINISH'];const index=self.progress<.35?0:self.progress<.75?1:self.progress<.92?2:3;document.querySelectorAll('.assembly-stage').forEach((el,i)=>el.classList.toggle('active',i===index));const caption=document.querySelector('.assembly-current');if(caption)caption.textContent=steps[index];}}});sequence.to('.hero-copy',{opacity:0,y:-60,duration:.3},0).to('.hero-car',{width:'108%',right:'-4%',top:'7%',height:'86%',duration:.6},0).to('.car-caption',{opacity:0,duration:.2},0).to('.scroll-story',{opacity:1,duration:.2},.4).to('.scroll-story',{opacity:0,duration:.15},.85);});
+ gsap.fromTo('.process-progress',{scaleX:0},{scaleX:1,ease:'none',scrollTrigger:{trigger:'.process',start:'top 75%',end:'bottom 35%',scrub:.6}});
+ gsap.utils.toArray<HTMLElement>('.section-heading').forEach(el=>gsap.fromTo(el,{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:.9,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%',once:true}}));
+ return()=>desktop.revert();});const header=document.querySelector('header');const onScroll=()=>header?.classList.toggle('scrolled',window.scrollY>30);onScroll();window.addEventListener('scroll',onScroll,{passive:true});return()=>{mm.revert();window.removeEventListener('scroll',onScroll)}},[]);return null}
